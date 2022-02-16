@@ -1,3 +1,3 @@
 **Blackjack Game**
 <br>
-link: 
+https://mayank1728.github.io/Blackjack/
