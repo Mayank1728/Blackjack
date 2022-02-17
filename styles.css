@@ -8,6 +8,10 @@
     border: 4px white solid;
     border-radius: 10px;
     color: white;    
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    transform: translateX(75%);
     /* Horizontally allign body */
 }
 
@@ -68,6 +72,8 @@ p {
     font-weight: 400;
 }
 
-
+#forv {
+    position: relative;
+}
 
 
