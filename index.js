@@ -45,7 +45,6 @@ function displayContent() {
 
 }
 
-
 document.getElementById("newCard").addEventListener("click", function() {
     if (sum < 21)
     {
