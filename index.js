@@ -1,33 +1,42 @@
-let cards = []
 let sum = 0
+let cards = []
+const displaySum = document.getElementById("sum")
+const message = document.getElementById("message")
+const displayCards = document.getElementById("cardsValue")
+const startbtn = document.getElementById("start")
+const addCardBtn = document.getElementById("newCard")
 
-const displaySum = document.getElementById("total")
-const comment = document.getElementById("comment")
-const displayValue = document.getElementById("cardsValue")
-
-function getCard() {
-    return Math.floor((Math.random() * 13) + 1)
-}
-
-document.getElementById("start").addEventListener("click", function() {
+startbtn.addEventListener("click", function() {
     cards = []
-    cards.push(getCard(), getCard())
-    displayContent()   
+    cards.push(randomCard(), randomCard())
+    displayCardsValue()   
     sumOfCards()
-    checkBlackjack()
+    checkBlackJack()
     
 })
 
-function checkBlackjack() {
-    if (sum === 21) {
-        comment.textContent = `Yes! Blackjack :)`
-    } else if (sum < 21) {
-        comment.textContent = `Draw a new Card :|`
-    } else {
-        comment.textContent = `You lost!! Start new game`
-        cards = []
-        sum = 0
+addCardBtn.addEventListener("click", function() {
+    // you can add a new card only when sum is less than 21
+    if (sum < 21)
+    {
+        cards.push(randomCard())
+        displayCardsValue()
+        sumOfCards()
+        checkBlackJack()
     }
+})
+
+function randomCard() {
+    return Math.floor((Math.random() * 13) + 1)
+    // will return an integer in [1,13]
+}
+
+function displayCardsValue() {
+    displayCards.textContent = ""
+    for(let i = 0; i < cards.length; i++) {
+        displayCards.textContent += `${cards[i]} `
+    }
+    
 }
 
 function sumOfCards() {
@@ -37,22 +46,16 @@ function sumOfCards() {
     }
     displaySum.textContent = sum
 }
-function displayContent() {
-    displayValue.textContent = ""
-    for(let i = 0; i < cards.length; i++) {
-        displayValue.textContent += `${cards[i]} `
-    }
 
+function checkBlackJack() {
+    if (sum < 21) {
+        message.textContent = `Draw a new Card`
+    } else if (sum === 21) {
+        message.textContent = `Yes! Blackjack :)`
+    } else {
+        message.textContent = `You lost!! Start new game`
+        cards = []
+        sum = 0
+    }
 }
 
-document.getElementById("newCard").addEventListener("click", function() {
-    if (sum < 21)
-    {
-        cards.push(getCard())
-        sumOfCards()
-        displayContent()
-        checkBlackjack()
-    }
-
-
-})
