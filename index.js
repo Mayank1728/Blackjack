@@ -11,7 +11,7 @@ startbtn.addEventListener("click", function() {
     cards.push(randomCard(), randomCard())
     displayCardsValue()   
     sumOfCards()
-    checkBlackJack()
+    setTimeout(checkBlackJack, 100)
     
 })
 
@@ -22,7 +22,7 @@ addCardBtn.addEventListener("click", function() {
         cards.push(randomCard())
         displayCardsValue()
         sumOfCards()
-        checkBlackJack()
+        setTimeout(checkBlackJack, 100)
     }
 })
 
